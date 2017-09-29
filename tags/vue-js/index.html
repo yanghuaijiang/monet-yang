@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yanghuaijiang.github.io/monet-yang">
-  <title>monetyang</title>
+  <title>Tag: vue.js | monetyang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="小不忍则卖大萌">
 <meta property="og:type" content="website">
 <meta property="og:title" content="monetyang">
-<meta property="og:url" content="https://yanghuaijiang.github.io/monet-yang/index.html">
+<meta property="og:url" content="https://yanghuaijiang.github.io/monet-yang/tags/vue-js/index.html">
 <meta property="og:site_name" content="monetyang">
 <meta property="og:description" content="小不忍则卖大萌">
 <meta property="og:locale" content="zh-CN">
@@ -147,36 +147,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于vue的双向绑定（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/monet-yang/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/monet-yang/2017/09/29/关于vue的双向绑定（一）/" class="archive-article-date">
+  	<time datetime="2017-09-29T02:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/monet-yang/2017/09/29/关于vue的双向绑定（一）/">关于vue的双向绑定（一）</a>
+      <a class="archive-article-title" href="/monet-yang/2017/09/29/关于vue的双向绑定（一）/">关于vue的双向绑定（一）</a>
     </h1>
   
 
-        
-        <a href="/monet-yang/2017/09/29/关于vue的双向绑定（一）/" class="archive-article-date">
-  	<time datetime="2017-09-29T02:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、极简的双向绑定实现<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;input type=<span class="string">"text"</span> id=<span class="string">"a"</span> /&gt;</div><div class="line">&lt;span id=<span class="string">"b"</span>&gt;&lt;/span&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">let</span> obj = &#123;&#125;;</div><div class="line">    <span class="built_in">Object</span>.defineProperty(obj, <span class="string">'hello'</span>, &#123;</div><div class="line">        set(newVal) =&gt; &#123;</div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">'a'</span>).value = newVal;</div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">'b'</span>).innerHTML = newVal;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'keyup'</span>, e =&gt; &#123;</div><div class="line">        obj.hello = e.target.value;</div><div class="line">    &#125;);</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure><br>&emsp;&emsp;此例实现的效果是：随文本框输入文字的变化，span 中会同步显示相同的文字内容；在js或控制台显式的修改 obj.hello 的值，视图会相应更新。这样就实现了 model =&gt; view 以及 view =&gt; model 的双向绑定。<br>&emsp;&emsp;简单的就到这里。</p>
-<p>二、DocumentFragment<br>&emsp;&emsp;DocumentFragment（文档片段）可以看作节点容器，它可以包含多个子节点，当我们将它插入到 DOM 中时，只有它的子节点会插入目标节点，所以把它看作一组节点的容器。使用 DocumentFragment 处理节点，速度和性能远远优于直接操作 DOM。<br>&emsp;&emsp;Vue 进行编译时，就是将挂载目标的所有子节点劫持（真的是劫持，通过 append 方法，DOM 中的节点会被自动删除）到 DocumentFragment 中，经过一番处理后，再将 DocumentFragment 整体返回插入挂载目标。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"app"</span> /&gt;</div><div class="line">    &lt;input type=<span class="string">"text"</span> id=<span class="string">"a"</span> /&gt;</div><div class="line">    &lt;span id=<span class="string">"b"</span>&gt;&lt;/span&gt;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;script&gt;</span></div><div class="line"><span class="regexp">    let dom = nodeToFragment(document.getElementById('app'));</span></div><div class="line"><span class="regexp">    </span></div><div class="line"><span class="regexp">    function nodeToFragment(node) &#123;</span></div><div class="line"><span class="regexp">        let flag = document.createDocumentFragment();</span></div><div class="line"><span class="regexp">        let child;</span></div><div class="line"><span class="regexp">        while (child = node.firstChild) &#123;</span></div><div class="line"><span class="regexp">            flag.append(child)</span></div><div class="line"><span class="regexp">        &#125;</span></div><div class="line"><span class="regexp">        if (isChild(child)) &#123;</span></div><div class="line"><span class="regexp">            nodeToFragment(isChild(child),vm);</span></div><div class="line"><span class="regexp">        &#125;</span></div><div class="line"><span class="regexp">        return flag;</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">    function isChild(node)&#123;</span></div><div class="line"><span class="regexp">        if (node.childNodes.length === 0) &#123;</span></div><div class="line"><span class="regexp">            return false;</span></div><div class="line"><span class="regexp">        &#125; else&#123;</span></div><div class="line"><span class="regexp">            return node;</span></div><div class="line"><span class="regexp">        &#125;</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp">&lt;/</span>script&gt;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -188,181 +186,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/monet-yang/2017/09/29/关于vue的双向绑定（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-关于开车" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/monet-yang/2017/09/29/关于开车/">关于开车</a>
-    </h1>
-  
-
-        
-        <a href="/monet-yang/2017/09/29/关于开车/" class="archive-article-date">
-  	<time datetime="2017-09-29T01:37:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&emsp;&emsp;昨天看了篇<a href="http://baijiahao.baidu.com/s?id=1579686504785427348&wfr=spider&for=pc" title="新闻" target="_blank">新闻</a>，说是汽车之家的老总闫闯因为自己员工开车没系安全带，然后把她绑到了墙上，看完之后，心里先是一笑，然后又把笑容收住了，细想，一个老板为什么要对员工如此苛刻？就简简单单的因为没系安全带么？<br>&emsp;&emsp;实际上，白领一族开车上班，本是件很普通的事情，但她没有系安全带，这是违反道路安全法的，虽未产生严重的后果，但这些细节不去考虑，往往会造成很严重的后果。随便网上一搜，都能看到很多触目惊心的视频。各种路怒症，开车陋习等等，总会在将来的某个点爆发。所以顿时觉得闫闯的做法，是应该的。<br>&emsp;&emsp;昨天开车上班，自己也是由于着急送媳妇，然后车道也不是直行的，然后我就变道没有打转向灯，车子虽未碰到，但还是差一点，要不是后面的那个司机一直“滴”我，估计肯定是会有小碰擦的。送完媳妇，回到单位，第一件事情，就是把自己开车不好的地方写到了备忘录里，时刻提醒自己。</p>
-<p><div align="center"><br><img src="/monet-yang/images/1.jpeg" width="400" title="这是一张图片"><br></div><br>&emsp;&emsp;最后，作为一个新司机，必须要养成良好的开车习惯，加油！<br><!-- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">写代码</div></pre></td></tr></table></figure></p>
-<a href="http://blog.fens.me" title="粉丝日志" target="_blank">粉丝日志</a>
-<img src="/monet-yang/images/1.jpg" width="400" title="这是一张图片"> –&gt;
---></p>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">开车 随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/monet-yang/2017/09/29/关于开车/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/monet-yang/2017/09/28/hello/">hello</a>
-    </h1>
-  
-
-        
-        <a href="/monet-yang/2017/09/28/hello/" class="archive-article-date">
-  	<time datetime="2017-09-28T10:00:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>你好，欢迎来到我的个人技术博客。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/monet-yang/2017/09/28/hello/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -384,10 +220,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
