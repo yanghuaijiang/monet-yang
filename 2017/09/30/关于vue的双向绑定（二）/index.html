@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yanghuaijiang.github.io/monet-yang">
-  <title>Archives: 2017 | monetyang</title>
+  <title>关于vue的双向绑定（二） | monetyang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小不忍则卖大萌">
-<meta property="og:type" content="website">
-<meta property="og:title" content="monetyang">
-<meta property="og:url" content="https://yanghuaijiang.github.io/monet-yang/archives/2017/index.html">
+  <meta name="description" content="三、数据初始化绑定123456789101112131415161718192021function compile(node ,vm) &amp;#123;    let reg = /\&amp;#123;\&amp;#123;(.*)\&amp;#125;\&amp;#125;/;    //元素    if (node.nodeType === 1) &amp;#123;        let attr = node.attribute">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于vue的双向绑定（二）">
+<meta property="og:url" content="https://yanghuaijiang.github.io/monet-yang/2017/09/30/关于vue的双向绑定（二）/index.html">
 <meta property="og:site_name" content="monetyang">
-<meta property="og:description" content="小不忍则卖大萌">
+<meta property="og:description" content="三、数据初始化绑定123456789101112131415161718192021function compile(node ,vm) &amp;#123;    let reg = /\&amp;#123;\&amp;#123;(.*)\&amp;#125;\&amp;#125;/;    //元素    if (node.nodeType === 1) &amp;#123;        let attr = node.attribute">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-30T08:00:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="monetyang">
-<meta name="twitter:description" content="小不忍则卖大萌">
+<meta name="twitter:title" content="关于vue的双向绑定（二）">
+<meta name="twitter:description" content="三、数据初始化绑定123456789101112131415161718192021function compile(node ,vm) &amp;#123;    let reg = /\&amp;#123;\&amp;#123;(.*)\&amp;#125;\&amp;#125;/;    //元素    if (node.nodeType === 1) &amp;#123;        let attr = node.attribute">
   
     <link rel="alternative" href="/atom.xml" title="monetyang" type="application/atom+xml">
   
@@ -145,152 +146,106 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-关于vue的双向绑定（二）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      关于vue的双向绑定（二）
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/monet-yang/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/monet-yang/2017/09/30/关于vue的双向绑定（二）/" class="archive-article-date">
+
+        
+        <a href="/monet-yang/2017/09/30/关于vue的双向绑定（二）/" class="archive-article-date">
   	<time datetime="2017-09-30T07:38:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/monet-yang/2017/09/30/关于vue的双向绑定（二）/">关于vue的双向绑定（二）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>三、数据初始化绑定<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">node ,vm</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> reg = <span class="regexp">/\&#123;\&#123;(.*)\&#125;\&#125;/</span>;</div><div class="line">    <span class="comment">//元素</span></div><div class="line">    <span class="keyword">if</span> (node.nodeType === <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">let</span> attr = node.attributes;</div><div class="line">        <span class="keyword">for</span>（<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; attr.length; i++） &#123;</div><div class="line">            <span class="keyword">if</span> (attr[i].nodeName == <span class="string">'v-model'</span>) &#123;</div><div class="line">                <span class="keyword">let</span> name = attr[i].nodeValue;</div><div class="line">                node.value = vm.data[name];</div><div class="line">                node.removeAttribute(<span class="string">'v-model'</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//text</span></div><div class="line">    <span class="keyword">if</span> (node.nodeType === <span class="number">3</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (reg.test(node.nodeValue)) &#123;</div><div class="line">            <span class="keyword">let</span> name = <span class="built_in">RegExp</span>.$<span class="number">1</span>;</div><div class="line">            name = name.trim();</div><div class="line">            node.nodeValue = vm.data[name];</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure><br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">nodeToFragment</span>(<span class="params">node, vm</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> flag = <span class="built_in">document</span>.createDocumentFragment();</div><div class="line">    <span class="keyword">let</span> child;</div><div class="line">    <span class="keyword">while</span> (child = node.firstChild) &#123;</div><div class="line">        compile(child, vm);</div><div class="line">        flag.appendChild(child)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (isChild(child)) &#123;</div><div class="line">        nodeToFragment(isChild(child), vm);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> flag;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.data = options.data;</div><div class="line">    <span class="keyword">let</span> id = options.el;</div><div class="line">    <span class="keyword">let</span> dom = nodeToFragment(<span class="built_in">document</span>.getElementById(id), <span class="keyword">this</span>);</div><div class="line"></div><div class="line">    <span class="built_in">document</span>.getElementById(id).appendChild(dom);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    el: <span class="string">'app'</span>,</div><div class="line">    data: &#123;</div><div class="line">        text: <span class="string">'hello world'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div></pre></td></tr></table></figure>
+<p>任务一至此结束</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/monet-yang/2017/09/29/关于vue的双向绑定（一）/" class="archive-article-date">
-  	<time datetime="2017-09-29T02:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/monet-yang/2017/09/29/关于vue的双向绑定（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于vue的双向绑定（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/monet-yang/2017/09/29/关于vue的双向绑定（一）/">关于vue的双向绑定（一）</a>
-    </h1>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="关于vue的双向绑定（二）" data-title="关于vue的双向绑定（二）" data-url="https://yanghuaijiang.github.io/monet-yang/monet-yang/2017/09/30/关于vue的双向绑定（二）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vue.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/monet-yang/2017/09/29/关于开车/" class="archive-article-date">
-  	<time datetime="2017-09-29T01:37:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/monet-yang/2017/09/29/关于开车/">关于开车</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">开车 随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/monet-yang/2017/09/28/hello/" class="archive-article-date">
-  	<time datetime="2017-09-28T10:00:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/monet-yang/2017/09/28/hello/">hello</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -313,8 +268,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

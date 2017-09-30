@@ -147,6 +147,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于vue的双向绑定（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/monet-yang/2017/09/30/关于vue的双向绑定（二）/">关于vue的双向绑定（二）</a>
+    </h1>
+  
+
+        
+        <a href="/monet-yang/2017/09/30/关于vue的双向绑定（二）/" class="archive-article-date">
+  	<time datetime="2017-09-30T07:38:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>三、数据初始化绑定<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">node ,vm</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> reg = <span class="regexp">/\&#123;\&#123;(.*)\&#125;\&#125;/</span>;</div><div class="line">    <span class="comment">//元素</span></div><div class="line">    <span class="keyword">if</span> (node.nodeType === <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">let</span> attr = node.attributes;</div><div class="line">        <span class="keyword">for</span>（<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; attr.length; i++） &#123;</div><div class="line">            <span class="keyword">if</span> (attr[i].nodeName == <span class="string">'v-model'</span>) &#123;</div><div class="line">                <span class="keyword">let</span> name = attr[i].nodeValue;</div><div class="line">                node.value = vm.data[name];</div><div class="line">                node.removeAttribute(<span class="string">'v-model'</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//text</span></div><div class="line">    <span class="keyword">if</span> (node.nodeType === <span class="number">3</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (reg.test(node.nodeValue)) &#123;</div><div class="line">            <span class="keyword">let</span> name = <span class="built_in">RegExp</span>.$<span class="number">1</span>;</div><div class="line">            name = name.trim();</div><div class="line">            node.nodeValue = vm.data[name];</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure><br></p>
+        
+          <a class="article-more-a" href="/monet-yang/2017/09/30/关于vue的双向绑定（二）/#more">余下全文 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/monet-yang/2017/09/30/关于vue的双向绑定（二）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于vue的双向绑定（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
